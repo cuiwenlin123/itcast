@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //创建对象-自定义构造函数
+    function Person(name,age,sayHello) {
+        this.name=name;
+        this.age=age;
+        this.sayHello=sayHello;
+    }
+
+    var p1 = new Person('尼古拉斯凯奇',50,function () {
+                console.log('hello everybody!');
+                }
+            );
+    var p2 = new Person('小明',18,function () {
+                console.log('hello everybody!');
+                }
+            );
+
+    console.log(p1,p2);
+    p1.sayHello();
+</script>

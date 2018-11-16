@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	function sum(num1,num2){
+		if (num1==undefined || num2==undefined) {
+			throw{
+				errMsg:"能不能好好玩耍",
+				errCode: 1388888
+			}
+		}else{
+			return num1+num2;	
+		}
+	}
+
+	
+
+	try{
+		sum(0);
+	}catch(e){
+		console.log(e);
+	}finally{
+		
+	}
+</script>

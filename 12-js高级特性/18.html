@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+    <script>
+        function getChildNode1(element) {
+            var elements = element.children;
+
+            for (var i = 0; i < elements.length; i++) {
+                var childNode = elements[i];
+                childNode.style.border='1px solid red';
+                getChildNode(elements[i]);
+            }
+
+        }
+
+        function getChildNode2(node) {
+            var nodes = node.childNodes;
+            var result =[];
+            for (var i = 0; i < nodes.length; i++) {
+                var childeNodes = nodes[i];
+                if (childeNodes.nodeType === 1){
+                    result.push(childeNodes);
+                    var temp = getChildNode2(childeNodes);
+                    result = result.concat(temp);
+                }
+            }
+            return result;
+        }
+
+        window.onload = function () {
+           var arr =  getChildNode2(document.body);
+            for (var i = 0; i < arr.length; i++) {
+                arr[i].style.border='1px solid red';
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<div>
+    <p>1p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>2p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>3p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>4p<span>1span</span><span>2span</span><span>3span</span></p>
+    <p>5p<span>1span</span><span>2span</span><span>3span</span></p>
+</div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+</body>
+</html>

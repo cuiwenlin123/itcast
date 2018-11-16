@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function foo(){
+			var name='小明';
+			var age=18;
+			var gender='male';
+
+			return {
+				getName:function(){
+					return name;
+				},
+				setName:function (value) {
+					name = value;
+				},
+				getAge:function(){
+					return age;
+				},
+				setAge:function(value){
+					age = value;
+				},
+				getGender:function(){
+					return gender;
+				},
+				setGender:function(value){
+					gender = value;
+				}
+			}
+		}
+
+		var obj = foo();
+		obj.setName('兰兰');
+		obj.setAge(20);
+		console.log(obj.getName());
+		console.log(obj.getAge());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

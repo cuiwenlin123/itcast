@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //对象的三大特性
+        //1.封装
+
+        //2.继承
+            var obj = {
+
+            };
+
+            var obj1 = {
+                name:'小明',
+                say: function () {
+                    console.log('hello world');
+                }
+            }
+            //混入式继承
+            for (var k in obj1){
+                obj[k]=obj1[k];
+            }
+            console.log(obj);
+        //3.多态
+    </script>
+</body>
+</html>

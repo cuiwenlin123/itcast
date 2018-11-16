@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function max() {
+//        console.log(arguments);
+        var maxNum = arguments[0];
+        for (var i = 1; i < arguments.length; i++) {
+            maxNum = maxNum>arguments[i]?maxNum:arguments[i];
+        }
+        return maxNum;
+    }
+    console.log(max(1, 2, 3, 4, 223));
+
+
+    var distinct = new Function(`
+        var arr = [];
+        for(var i = 0;i<arguments.length;i++){
+            if(arr.indexOf(arguments[i])==-1){
+                arr.push(arguments[i]);
+            }
+        }
+        return arr;
+    `);
+    console.log(distinct(232,13,412,13,2,0,2,2));
+
+    var str = 'var a = 10';
+    eval(str);
+    console.log(a);
+
+    var json = '{"name":"za","age":19}';
+//    var o = JSON.parse(json);
+    eval('var o = '+json);
+    console.log(o);
+
+    var json = '({"name":"za","age":19})';
+    var o = eval(json);
+    console.log(o);
+</script>

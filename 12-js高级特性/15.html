@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            function SongManager(){
+                this.songList = null;
+            }
+
+            SongManager.prototype ={
+                constructor:SongManager,
+                init: function (songList) {
+                    this.songList = songList;
+                },
+                //增
+                add:function (song) {
+                    this.songList.push(song);
+                },
+                //删
+                remove:function (songName) {
+                    var song = this.select(songName);
+                    if (song === null){
+                        throw '您删除的歌曲不存在！请重新尝试';
+                    }
+                    var index = this.songList.indexOf(song);
+                    this.songList.splice(index,1);
+                },
+
+                //改
+                update:function (songName,singer) {
+                    var song = this.select(songName);
+                    if (song === null){
+                        throw '您删除的歌曲不存在！请重新尝试';
+                    }
+                    this.songList.singer = singer;
+                },
+
+                //查
+                select:function (songName) {
+                    for (var k = 0; k < this.songList.length; k++) {
+                        var song = this.songList[k];
+                        if(song.songName === songName){
+                            return song;
+                        }
+                    }
+                    return null;
+                }
+            }
+
+            var manager = new SongManager();
+            manager.init([
+                {
+                    songName:'情书',
+                    singer:'张学友'
+                },
+                {
+                    songName:'演员',
+                    singer:'薛小谦'
+                },
+                {
+                    songName:'李白',
+                    singer:'李荣浩'
+                }
+            ]);
+            var manager1 = new SongManager();
+            manager1.init([
+                {
+                    songName:'情书',
+                    singer:'张学友'
+                },
+                {
+                    songName:'演员',
+                    singer:'薛小谦'
+                },
+                {
+                    songName:'李白',
+                    singer:'李荣浩'
+                }
+            ]);
+
+            manager.add({
+                songName:'东风破',
+                singer:'Jay'
+            });
+            manager1.add({
+                songName:'东风破',
+                singer:'Jay'
+            });
+
+            manager.remove('东风破');
+//            manager1.remove('李白');
+
+
+            console.log(manager.songList);
+            console.log(manager1.songList);
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

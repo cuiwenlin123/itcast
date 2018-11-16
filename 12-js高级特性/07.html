@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Student(name,age,height,weight) {
+        this.name = name;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.act = function () {
+            console.log('学习，吃饭，看片，撩妹子');
+        };
+    }
+    var stu1 = new Student('小明',16,'180cm','60kg');
+
+    console.log(stu1);
+    stu1.act();
+
+    console.log(Student.prototype);
+    Student.prototype.new1='新添加原型属性';
+    console.log(Student.prototype);
+    console.log(stu1.new1);
+</script>
+</body>
+</html>

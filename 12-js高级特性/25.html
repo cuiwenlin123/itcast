@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .wrapper{
+            width: 1000px;
+            height: 475px;
+            margin: 100px auto 0;
+        }
+        .tab{
+            border: 1px solid #ddd;
+            border-bottom:0;
+            height: 36px;
+            width: 320px;
+        }
+        .tab li{
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            cursor: pointer;
+            border-top:4px solid #fff;
+        }
+        .tab span{
+            position: absolute;
+            right: 0;
+            top: 10px;
+            background-color: #ddd;
+            width: 1px;
+            height: 14px;
+            overflow: hidden;
+        }
+        .product{
+            width: 1002px;
+            border: 1px solid #ddd;
+            height: 476px;
+        }
+        .product .main{
+            float: left;
+            display: none;
+        }
+        .product .main.selected{
+            display: block;
+        }
+        .tab li.active{
+            border-color: red;
+            border-bottom:0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="wrapper">
+        <ul class="tab" id="tab_menu">
+            <li class="tab_item active">国际大牌<span>◆</span></li>
+            <li class="tab_item">国妆名牌<span>◆</span></li>
+            <li class="tab_item">清洁用品<span>◆</span></li>
+            <li class="tab_item">男士精品</li>
+        </ul>
+        <div class="product" id="tab_main">
+            <div class="main selected">
+                <a href="#"><img src="imgs/guojidapai.jpg" alt=""></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="imgs/guozhuangmingpin.jpg" alt=""/></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="imgs/qingjieyongpin.jpg" alt=""/></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="imgs/nanshijingpin.jpg" alt=""/></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/25.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        var tb = new Tab({
+            tabMenu: "tab_menu",    // 指定tab栏菜单id
+            tabMain: "tab_main",    // 指定tab栏内容id
+            auto: true           // 是否自动播放
+        });
+    };
+
+//    (function (window) {
+//        function Tab(config) {
+//            this.tabMenus = null;
+//            this.tabMains = null;
+//            this.timer = null;
+//
+//            if(config){
+//                this.init(config);
+//            }
+//        }
+//        Tab.prototype={
+//            constructor:Tab,
+//            init:function (config) {
+//                this.initElements(config);
+//                this.initEvent(config);
+//                if(config.auto){
+//                    this.autoPlay();
+//                }
+//            },
+//            initElements:function (config) {
+//                var tabMenu = document.getElementById(config.tabMenu);
+//                var tabMain = document.getElementById(config.tabMain);
+//
+//                this.tabMenus = tabMenu.children;
+//                this.tabMains = tabMain.children;
+//            },
+//            initEvent:function (config) {
+//                for (var i = 0; i < this.tabMenus.length; i++) {
+//                    var li = this.tabMenus[i];
+//                    li.index = i;
+//                    var _that = this;
+//                    li.onclick = function () {
+//                        if(config.auto) {
+//                            clearInterval(_that.timer);
+//                        }
+//                        _that.change(this);
+//                        if(config.auto){
+//                            var index = this.index;
+//                            _that.autoPlay(index);
+//                        }
+//                    }
+//                }
+//            },
+//            change:function (tabMenu) {
+//                for (var i = 0; i < this.tabMenus.length; i++) {
+//                    this.tabMenus[i].className = 'tab_item';
+//                    this.tabMains[i].className = 'main';
+//                }
+//                tabMenu.className +=' active';
+//                this.tabMains[tabMenu.index].className +=' selected';
+//            },
+//            autoPlay:function (index) {
+//                var index = index||0;
+//                var that = this;
+//                this.timer = setInterval(function () {
+//                    index++;
+//                    if(index >= that.tabMenus.length){
+//                        index = 0;
+//                    }
+//                    that.change(that.tabMenus[index]);
+//                },2000);
+//            }
+//        }
+//        window.Tab = Tab;
+//    })(window);
+
+
+</script>

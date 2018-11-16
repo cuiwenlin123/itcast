@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function SongManager() {
+        this.songList = null;
+    }
+    SongManager.prototype={
+        constructor:SongManager,
+        init:function (songList) {
+            this.songList = songList;
+        },
+        add:function (song) {
+            this.songList.push(song);
+        },
+        select:function (songName) {
+            for (var i = 0; i < this.songList.length; i++) {
+                var song = this.songList[i];
+                if (song.songName==songName){
+                    return song;
+                }
+            }
+            return null;
+        },
+        remove:function (songName) {
+            var song = this.select(songName);
+            if(song === null){
+                throw '没有该歌曲';
+            }
+            var index = this.songList.indexOf(song);
+            this.songList.splice(index,1);
+        },
+        update:function (songName,singer) {
+            var song = this.select(songName);
+            if(song === null){
+                throw '没有该歌曲';
+            }
+            song.singer=singer;
+        }
+    };
+
+    var songList = [
+        {
+            songName:'情书',
+            singer:'张学友'
+        },
+        {
+            songName:'演员',
+            singer:'薛小谦'
+        },
+        {
+            songName:'李白',
+            singer:'李荣浩'
+        },
+    ];
+
+    var mm = new SongManager();
+    mm.init(songList);
+    console.log(mm.select('演员'));
+    mm.add({
+        songName:'东风破',
+        singer:'jay'
+    });
+    mm.remove('李白');
+    mm.update('演员','薛之谦');
+    console.log(mm.songList);
+</script>

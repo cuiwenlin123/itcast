@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //经典继承-解决es5兼容性问题
+        var obj ={
+            name:'周三'
+        };
+
+        function create(obj) {
+            if(Object.create){
+                return Object.create(obj);
+            }else{
+                function F() {
+
+                }
+                F.prototype=obj;
+                F.prototype.constructor=F;
+                return new F();
+            }
+        }
+
+        var o =create(obj);
+        console.log(o.name);
+    </script>
+</body>
+</html>

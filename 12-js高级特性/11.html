@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var o ={};
+    console.log(o.toString());
+    console.log(o.toLocaleString());
+
+    var date = new Date();
+    console.log(date.toString());
+    console.log(date.toLocaleString());
+
+    function Person() {
+        this.valueOf = function () {
+            return 124;
+        }
+    }
+    var p = new Person();
+
+    console.log(1 + p);
+
+    var sing = new Function("console.log('daskjfsadk');console.log('daskjfsadk');console.log('daskjfsadk');console.log('daskjfsadk');");
+    sing();
+
+</script>
+</body>
+</html>

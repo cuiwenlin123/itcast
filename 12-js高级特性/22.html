@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function () {
+			var div = document.querySelectorAll('div')[0];
+
+			var registeEvent = createRegisteEvent();
+
+			registeEvent(div,'click',function(e){
+				console.log(this);
+				console.log(e);
+				console.log('这是一个点击事件');
+			})
+
+		}
+
+		//事件兼容性问题
+		function createRegisteEvent(){
+			if(window.addEventListener){
+				return function(target,type,hander){
+					target.addEventListener(type,hander);
+				}
+			}else if(window.attachEvent){
+				return function(target,type,hander){
+					target.attachEvent('on'+type,function(){
+						hander.call(target, window.event);
+					});
+				}
+			}else{
+				return function(target,type,hander){
+					target['on'+type] = hander;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div>
+		11111111111111
+	</div>
+</body>
+</html>

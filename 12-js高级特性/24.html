@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .songList{
+            width: 850px;
+            margin: 0 auto;
+            border: 1px solid #b9def0;
+        }
+        .songList_top{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 100px;
+        }
+        .songList_title{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #b9def0;
+            border-bottom:1px solid #ccc;
+        }
+        .songName{
+            width: 40%;
+            float: left;
+            border-right:1px solid #ccc;
+        }
+        .singer{
+            width: 50%;
+            float: left;
+            border-right:1px solid #ccc;
+        }
+        .songList_main{
+            height: 100%;
+        }
+        .songList_single{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .songList_single .songName,.songList_single .singer{
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="songList">
+        <div class="songList_top">
+            <label for="txtAddSongName">歌曲名</label>
+            <input type="text" id="txtAddSongName">
+            <label for="txtAddSinger">歌手</label>
+            <input type="text" id="txtAddSinger">
+            <button id="btnAdd">添加</button>
+            <button id="btnRemove">删除</button>
+            <button id="btnUpdate">修改歌手</button>
+        </div>
+        <div class="songList_title">
+            <div class="songName">歌曲名称</div>
+            <div class="singer">歌手</div>
+            <div class="option">操作</div>
+        </div>
+        <div class="songList_main">
+            <div class="songList_single">
+                <div class="songName">歌曲名称</div>
+                <div class="singer">歌手</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    window.onload = function () {
+        var songList = [
+            {
+                name:'南山南',
+                singer:'马頔'
+            },
+            {
+                name:"大明湖畔",
+                singer:"夏雨荷"
+            },
+            {
+                name:"五环之歌",
+                singer:"小岳岳"
+            }
+        ];
+        var mp3 = new MP3(songList);
+
+        var btnAdd =document.getElementById('btnAdd');
+        var btnRemove =document.getElementById('btnRemove');
+        var btnUpdate =document.getElementById('btnUpdate');
+        var txtAddSongName =document.getElementById('txtAddSongName');
+        var txtAddSinger =document.getElementById('txtAddSinger');
+
+        btnAdd.onclick = function () {
+            var name = txtAddSongName.value;
+            var singer = txtAddSinger.value;
+            if(name.trim()!==''&& singer.trim()!==''){
+                mp3.addSong(name,singer);
+            }
+        }
+        btnRemove.onclick = function () {
+            var name = txtAddSongName.value;
+            if(name.trim()!==''){
+                mp3.removeSong(name);
+            }
+        }
+        btnUpdate.onclick = function () {
+            var name = txtAddSongName.value;
+            var singer = txtAddSinger.value;
+            if(name.trim()!==''&& singer.trim()!==''){
+                mp3.updateSong(name,singer);
+            }
+        }
+
+    };
+    function MP3(songList) {
+        this.songsList = songList || [];
+        this.init();
+    }
+    MP3.prototype={
+        constructoe:MP3,
+        init:function () {
+            this.render();
+        },
+        render:function () {
+            var div = document.querySelector('.songList_main');
+            var str = '';
+            for (var i = 0; i < this.songsList.length; i++) {
+                var song = this.songsList[i];
+                str += '<div class="songList_single">'+
+                    '<div class="songName">'+song.name+'</div>'+
+                    '<div class="singer">'+song.singer+'</div>'+
+                    '</div>';
+            }
+            div.innerHTML = str;
+        },
+        addSong:function (name,singer) {
+            if(!name||!singer){
+                throw '请正确传参';
+            }
+            var song = {
+                name: name,
+                singer:singer
+            };
+            this.songsList.push(song);
+            this.render();
+            return song;
+        },
+        selectSong:function (name) {
+            for (var i = 0; i < this.songsList.length; i++) {
+                var song = this.songsList[i];
+                if(song.name===name){
+                    return song;
+                }
+            }
+            return null;
+        },
+        removeSong:function (name) {
+            var song = this.selectSong(name);
+            var index = this.songsList.indexOf(song);
+            if(index!==-1){
+                this.songsList.splice(index,1);
+                this.render();
+                return true;
+            }
+            return false;
+        },
+        updateSong:function (name,singer) {
+            var song = this.selectSong(name);
+            if(song!==null){
+                song.singer =singer;
+                this.render();
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+</script>
